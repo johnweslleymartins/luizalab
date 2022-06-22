@@ -35,6 +35,7 @@ public class ProcessorServiceTest {
     @Test
     public void startProcessorTest() {
         service.startProcessor();
+        fileUtil.createDirectoriesByPath(diretorioBase + diretorioSaida);
         List<File> files = fileUtil.getFileByPath(diretorioBase + diretorioSaida);
         Assertions.assertEquals(2, files.size());
 

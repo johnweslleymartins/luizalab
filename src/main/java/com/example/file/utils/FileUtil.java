@@ -6,6 +6,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,7 @@ public class FileUtil {
     }
 
     public void generateFileInPath(String json, String fileName, String diretorioSaida) {
+        createDirectoriesByPath(diretorioSaida);
         File file = new File(diretorioSaida + fileName + ".json");
         if (!file.exists()) {
             try {
@@ -36,6 +40,17 @@ public class FileUtil {
             dados.close();
         } catch (IOException e) {
             throw new FileException("Erro ao escrever no arquivo");
+        }
+    }
+
+    public void createDirectoriesByPath(String diretorioSaida) {
+        Path diretorio = Paths.get(diretorioSaida);
+        try {
+            if (!Files.exists(diretorio)) {
+                Files.createDirectories(diretorio);
+            }
+        } catch (IOException e) {
+            throw new FileException("Erro ao criar um diretório");
         }
     }
 
