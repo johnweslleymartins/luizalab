@@ -1,0 +1,3 @@
+diretorioArquivo:
+  diretorioEntrada: "\\src\\main\\resources\\diretorioArquivoProducao\\entrada\\"
+  diretorioSaida: "\\src\\main\\resources\\diretorioArquivoProducao\\saida\\"
